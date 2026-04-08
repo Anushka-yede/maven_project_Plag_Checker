@@ -1,0 +1,13 @@
+{
+  "name": "plagiarism-checker",
+  "version": "1.0.0",
+  "description": "> Enterprise-grade AI-powered plagiarism detection platform — multi-module Maven + React 18 + Claude API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

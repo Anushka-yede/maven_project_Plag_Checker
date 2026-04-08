@@ -1,0 +1,224 @@
+pc-ai\src\main\java\com\pc\ai\AiDetectorService.java:3: error: package com.fasterxml.jackson.databind does not exist
+import com.fasterxml.jackson.databind.JsonNode;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\AiDetectorService.java:4: error: package com.fasterxml.jackson.databind does not exist
+import com.fasterxml.jackson.databind.ObjectMapper;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\AiDetectorService.java:5: error: package org.springframework.stereotype does not exist
+import org.springframework.stereotype.Service;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\AiDetectorService.java:24: error: cannot find symbol
+@Service
+ ^
+  symbol: class Service
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:3: error: package com.fasterxml.jackson.databind does not exist
+import com.fasterxml.jackson.databind.JsonNode;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:4: error: package com.fasterxml.jackson.databind does not exist
+import com.fasterxml.jackson.databind.ObjectMapper;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:5: error: package com.fasterxml.jackson.databind.node does not exist
+import com.fasterxml.jackson.databind.node.ArrayNode;
+                                          ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:6: error: package com.fasterxml.jackson.databind.node does not exist
+import com.fasterxml.jackson.databind.node.ObjectNode;
+                                          ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:8: error: package org.springframework.beans.factory.annotation does not exist
+import org.springframework.beans.factory.annotation.Value;
+                                                   ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:9: error: package org.springframework.stereotype does not exist
+import org.springframework.stereotype.Component;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:22: error: cannot find symbol
+@Component
+ ^
+  symbol: class Component
+pc-ai\src\main\java\com\pc\ai\AiDetectorService.java:28: error: cannot find symbol
+    private final ObjectMapper mapper;
+                  ^
+  symbol:   class ObjectMapper
+  location: class AiDetectorService
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:28: error: cannot find symbol
+    private static final MediaType JSON_MEDIA = MediaType.get("application/json; charset=utf-8");
+                         ^
+  symbol:   class MediaType
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:30: error: cannot find symbol
+    private final OkHttpClient httpClient;
+                  ^
+  symbol:   class OkHttpClient
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:31: error: cannot find symbol
+    private final ObjectMapper mapper;
+                  ^
+  symbol:   class ObjectMapper
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:7: error: package okhttp3 does not exist
+import okhttp3.*;
+^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:3: error: package com.fasterxml.jackson.databind does not exist
+import com.fasterxml.jackson.databind.JsonNode;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:4: error: package com.fasterxml.jackson.databind does not exist
+import com.fasterxml.jackson.databind.ObjectMapper;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:5: error: package okhttp3 does not exist
+import okhttp3.OkHttpClient;
+              ^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:6: error: package okhttp3 does not exist
+import okhttp3.Request;
+              ^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:7: error: package okhttp3 does not exist
+import okhttp3.Response;
+              ^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:8: error: package org.springframework.stereotype does not exist
+import org.springframework.stereotype.Service;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:26: error: cannot find symbol
+@Service
+ ^
+  symbol: class Service
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:34: error: cannot find symbol
+    private final OkHttpClient httpClient;
+                  ^
+  symbol:   class OkHttpClient
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:35: error: cannot find symbol
+    private final ObjectMapper mapper;
+                  ^
+  symbol:   class ObjectMapper
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:124: error: cannot find symbol
+    private String formatApa(JsonNode item) {
+                             ^
+  symbol:   class JsonNode
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\HumanizerService.java:3: error: package org.springframework.stereotype does not exist
+import org.springframework.stereotype.Service;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\HumanizerService.java:15: error: cannot find symbol
+@Service
+ ^
+  symbol: class Service
+pc-ai\src\main\java\com\pc\ai\RewriteSuggesterService.java:3: error: package org.springframework.stereotype does not exist
+import org.springframework.stereotype.Service;
+                                     ^
+pc-ai\src\main\java\com\pc\ai\RewriteSuggesterService.java:17: error: cannot find symbol
+@Service
+ ^
+  symbol: class Service
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:34: error: cannot find symbol
+    public ClaudeClient(@Value("${anthropic.api-key:}") String apiKey) {
+                         ^
+  symbol:   class Value
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\AiDetectorService.java:32: error: cannot find symbol
+        this.mapper = new ObjectMapper();
+                          ^
+  symbol:   class ObjectMapper
+  location: class AiDetectorService
+pc-ai\src\main\java\com\pc\ai\AiDetectorService.java:132: error: cannot find symbol
+            JsonNode node = mapper.readTree(jsonStr);
+            ^
+  symbol:   class JsonNode
+  location: class AiDetectorService
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:28: error: cannot find symbol
+    private static final MediaType JSON_MEDIA = MediaType.get("application/json; charset=utf-8");
+                                                ^
+  symbol:   variable MediaType
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:36: error: package OkHttpClient does not exist
+        this.httpClient = new OkHttpClient.Builder()
+                                          ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:41: error: cannot find symbol
+        this.mapper = new ObjectMapper();
+                          ^
+  symbol:   class ObjectMapper
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:59: error: cannot find symbol
+        ObjectNode body = mapper.createObjectNode();
+        ^
+  symbol:   class ObjectNode
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:63: error: cannot find symbol
+        ArrayNode messages = body.putArray("messages");
+        ^
+  symbol:   class ArrayNode
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:64: error: cannot find symbol
+        ObjectNode message = messages.addObject();
+        ^
+  symbol:   class ObjectNode
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:70: error: cannot find symbol
+        Request request = new Request.Builder()
+        ^
+  symbol:   class Request
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:70: error: package Request does not exist
+        Request request = new Request.Builder()
+                                     ^
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:75: error: cannot find symbol
+                .post(RequestBody.create(json, JSON_MEDIA))
+                      ^
+  symbol:   variable RequestBody
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:78: error: cannot find symbol
+        try (Response response = httpClient.newCall(request).execute()) {
+             ^
+  symbol:   class Response
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\ClaudeClient.java:84: error: cannot find symbol
+            JsonNode root = mapper.readTree(responseBody);
+            ^
+  symbol:   class JsonNode
+  location: class ClaudeClient
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:39: error: cannot find symbol
+        this.httpClient = new OkHttpClient();
+                              ^
+  symbol:   class OkHttpClient
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:40: error: cannot find symbol
+        this.mapper = new ObjectMapper();
+                          ^
+  symbol:   class ObjectMapper
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:97: error: cannot find symbol
+        Request request = new Request.Builder()
+        ^
+  symbol:   class Request
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:97: error: package Request does not exist
+        Request request = new Request.Builder()
+                                     ^
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:102: error: cannot find symbol
+        try (Response response = httpClient.newCall(request).execute()) {
+             ^
+  symbol:   class Response
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:104: error: cannot find symbol
+            JsonNode root = mapper.readTree(response.body().string());
+            ^
+  symbol:   class JsonNode
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:105: error: cannot find symbol
+            JsonNode items = root.path("message").path("items");
+            ^
+  symbol:   class JsonNode
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:107: error: cannot find symbol
+            for (JsonNode item : items) {
+                 ^
+  symbol:   class JsonNode
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:129: error: cannot find symbol
+            JsonNode authorsNode = item.path("author");
+            ^
+  symbol:   class JsonNode
+  location: class CitationFixerService
+pc-ai\src\main\java\com\pc\ai\CitationFixerService.java:132: error: cannot find symbol
+            for (JsonNode a : authorsNode) {
+                 ^
+  symbol:   class JsonNode
+  location: class CitationFixerService
+54 errors

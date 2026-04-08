@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: plagiarism-checker-api
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/plagiarism}
+    username: ${SPRING_DATASOURCE_USERNAME:pc}
+    password: ${SPRING_DATASOURCE_PASSWORD:pc_secret}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  batch:
+    job:
+      enabled: false     # jobs launched programmatically, not on startup
+    jdbc:
+      initialize-schema: always
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  websocket:
+    stomp:
+      enabled: true
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+jwt:
+  secret: ${JWT_SECRET:plagiarism-checker-secret-key-change-in-production-min-256-bits}
+  expiration-ms: 86400000   # 24 hours
+
+gemini:
+  api-key: ${GOOGLE_API_KEY:}
+
+minio:
+  url: ${MINIO_URL:http://localhost:9000}
+  access-key: ${MINIO_ACCESS_KEY:minioadmin}
+  secret-key: ${MINIO_SECRET_KEY:minioadmin}
+  bucket: ${MINIO_BUCKET:submissions}
+
+lucene:
+  index-dir: ${LUCENE_INDEX_DIR:./lucene-index}
+
+webhook:
+  default-url: ${WEBHOOK_DEFAULT_URL:}
+
+logging:
+  level:
+    com.pc: INFO
+    org.springframework.batch: INFO
+    org.springframework.security: WARN

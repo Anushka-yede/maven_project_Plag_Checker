@@ -1,0 +1,45 @@
+# ── Plagiarism Checker Pro — Git Ignore ──────────────
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/
+!.mvn/wrapper/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.suo
+*.user
+.classpath
+.project
+.settings/
+
+# Spring Boot
+/pc-api/src/main/resources/application-local.yml
+
+# Node / React
+pc-web/node_modules/
+pc-web/dist/
+pc-web/.env
+
+# Lucene index (generated at runtime)
+lucene-index/
+
+# Secrets
+.env
+*.env
+
+# MinIO / Docker data
+postgres-data/
+minio-data/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db

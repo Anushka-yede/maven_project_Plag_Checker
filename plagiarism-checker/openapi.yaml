@@ -1,0 +1,426 @@
+openapi: "3.1.0"
+info:
+  title: Plagiarism Checker Pro API
+  version: "1.0.0"
+  description: |
+    Enterprise-grade AI-powered plagiarism detection REST API.
+    All protected endpoints require a JWT Bearer token obtained from `/api/auth/login`.
+  contact:
+    name: Plagiarism Checker Pro
+  license:
+    name: MIT
+
+servers:
+  - url: http://localhost:8080
+    description: Local development
+
+security:
+  - BearerAuth: []
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    AuthResponse:
+      type: object
+      properties:
+        token: { type: string }
+        email: { type: string }
+        role:  { type: string, enum: [STUDENT, INSTRUCTOR, ADMIN] }
+
+    Submission:
+      type: object
+      properties:
+        id:           { type: string, format: uuid }
+        filename:     { type: string }
+        status:       { type: string, enum: [PENDING, PROCESSING, DONE, FAILED] }
+        sha256Hash:   { type: string }
+        version:      { type: integer }
+        assignmentId: { type: string, nullable: true }
+        createdAt:    { type: string, format: date-time }
+
+    SimilarityResult:
+      type: object
+      properties:
+        id:            { type: string, format: uuid }
+        docAId:        { type: string, format: uuid }
+        docBLabel:     { type: string }
+        tfidfScore:    { type: number, minimum: 0, maximum: 1 }
+        simhashScore:  { type: number, minimum: 0, maximum: 1 }
+        semanticScore: { type: number, minimum: 0, maximum: 1 }
+        aiProbability: { type: number, minimum: 0, maximum: 1 }
+        finalScore:    { type: number, minimum: 0, maximum: 1 }
+        algorithm:     { type: string }
+        matchedAt:     { type: string, format: date-time }
+
+    HeatmapCell:
+      type: object
+      properties:
+        docAId: { type: string }
+        docBId: { type: string }
+        score:  { type: number }
+
+    Annotation:
+      type: object
+      properties:
+        id:        { type: string, format: uuid }
+        resultId:  { type: string, format: uuid }
+        spanStart: { type: integer }
+        verdict:   { type: string, enum: [confirmed, dismissed, grey_area] }
+        note:      { type: string }
+        createdAt: { type: string }
+
+    HumanizeResponse:
+      type: object
+      properties:
+        original:  { type: string }
+        humanized: { type: string }
+
+    DetectionResponse:
+      type: object
+      properties:
+        aiProbability:  { type: number }
+        probabilityPct: { type: integer }
+        riskLabel:      { type: string }
+        reasoning:      { type: string }
+        indicators:     { type: array, items: { type: string } }
+
+    ProblemDetail:
+      type: object
+      properties:
+        status: { type: integer }
+        title:  { type: string }
+        detail: { type: string }
+
+paths:
+  # ── Auth ──────────────────────────────────────────────────────────────────
+
+  /api/auth/register:
+    post:
+      tags: [Auth]
+      summary: Register a new user account
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:    { type: string, format: email }
+                password: { type: string, minLength: 8 }
+                fullName: { type: string }
+                role:     { type: string, enum: [STUDENT, INSTRUCTOR, ADMIN] }
+      responses:
+        "201": { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/AuthResponse' } } } }
+        "409": { description: Email already registered, content: { application/json: { schema: { $ref: '#/components/schemas/ProblemDetail' } } } }
+
+  /api/auth/login:
+    post:
+      tags: [Auth]
+      summary: Authenticate and receive a JWT
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:    { type: string, format: email }
+                password: { type: string }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AuthResponse' } } } }
+        "401": { description: Invalid credentials }
+
+  # ── Submissions ──────────────────────────────────────────────────────────
+
+  /api/submissions:
+    get:
+      tags: [Submissions]
+      summary: List current user's submissions
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Submission' } }
+    post:
+      tags: [Submissions]
+      summary: Upload document for plagiarism analysis
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:         { type: string, format: binary }
+                assignmentId: { type: string }
+      responses:
+        "202": { description: Accepted — batch job triggered, content: { application/json: { schema: { $ref: '#/components/schemas/Submission' } } } }
+        "400": { description: Invalid file }
+
+  /api/submissions/{id}:
+    get:
+      tags: [Submissions]
+      summary: Get submission metadata
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Submission' } } } }
+        "404": { description: Not found }
+
+  /api/submissions/{id}/integrity:
+    get:
+      tags: [Submissions]
+      summary: Verify SHA-256 tamper-proof hash (Feature 16)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Integrity check result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  submissionId:  { type: string }
+                  integrityValid: { type: boolean }
+                  message:       { type: string }
+
+  # ── Reports ───────────────────────────────────────────────────────────────
+
+  /api/reports/{id}:
+    get:
+      tags: [Reports]
+      summary: Full similarity report (Feature 06)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  submissionId: { type: string }
+                  results: { type: array, items: { $ref: '#/components/schemas/SimilarityResult' } }
+                  spans:   { type: array }
+                  annotations: { type: array }
+
+  /api/reports/{id}/export:
+    get:
+      tags: [Reports]
+      summary: Export PDF audit report (Feature 10)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: PDF file
+          content:
+            application/pdf:
+              schema: { type: string, format: binary }
+
+  /api/reports/cohort/{assignmentId}:
+    get:
+      tags: [Reports]
+      summary: N×N similarity heatmap for an assignment (Feature 11)
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/HeatmapCell' } }
+
+  # ── Annotations ───────────────────────────────────────────────────────────
+
+  /api/annotations:
+    post:
+      tags: [Annotations]
+      summary: Save inline annotation (Feature 09)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [resultId, verdict]
+              properties:
+                resultId:  { type: string, format: uuid }
+                spanStart: { type: integer }
+                verdict:   { type: string, enum: [confirmed, dismissed, grey_area] }
+                note:      { type: string }
+      responses:
+        "201": { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Annotation' } } } }
+
+  # ── AI Features ───────────────────────────────────────────────────────────
+
+  /api/humanize:
+    post:
+      tags: [AI]
+      summary: Rewrite AI-generated text to sound human (Feature 01)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string, minLength: 10, maxLength: 10000 }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/HumanizeResponse' } } } }
+        "503": { description: Claude API unavailable }
+
+  /api/detect-ai:
+    post:
+      tags: [AI]
+      summary: Detect AI authorship probability (Feature 02)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string, minLength: 10, maxLength: 10000 }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/DetectionResponse' } } } }
+
+  /api/suggestions:
+    post:
+      tags: [AI]
+      summary: Get rewrite suggestions for a matched span (Feature 17)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [matchedSpan]
+              properties:
+                matchedSpan: { type: string }
+                context:     { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  originalSpan: { type: string }
+                  rewrites: { type: array, items: { type: string } }
+
+  /api/citations:
+    post:
+      tags: [AI]
+      summary: Get citation suggestions for uncited content (Feature 04)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uncitedSentences: { type: integer }
+                  suggestions: { type: array }
+
+  /api/check-preview:
+    post:
+      tags: [AI]
+      summary: Quick pre-submission check (Chrome Extension, Feature 20)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  aiRisk:        { type: string, enum: [LOW, MEDIUM, HIGH] }
+                  aiProbability: { type: number }
+                  message:       { type: string }
+
+  # ── Admin ─────────────────────────────────────────────────────────────────
+
+  /api/admin/users:
+    get:
+      tags: [Admin]
+      summary: List all users (ADMIN only)
+      responses:
+        "200": { description: OK }
+
+  /api/admin/users/{id}/role:
+    put:
+      tags: [Admin]
+      summary: Change user role (ADMIN only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role: { type: string, enum: [STUDENT, INSTRUCTOR, ADMIN] }
+      responses:
+        "200": { description: OK }
+
+  /api/admin/stats:
+    get:
+      tags: [Admin]
+      summary: System statistics (ADMIN only)
+      responses:
+        "200": { description: OK }

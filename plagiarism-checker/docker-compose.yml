@@ -1,0 +1,77 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pc-postgres
+    environment:
+      POSTGRES_DB: plagiarism
+      POSTGRES_USER: pc
+      POSTGRES_PASSWORD: pc_secret
+    ports:
+      - '5434:5432'
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pc -d plagiarism"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: pc-minio
+    command: server /data --console-address ':9001'
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: pc-api/Dockerfile
+    container_name: pc-api
+    ports:
+      - '8080:8080'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/plagiarism
+      SPRING_DATASOURCE_USERNAME: pc
+      SPRING_DATASOURCE_PASSWORD: pc_secret
+      MINIO_URL: http://minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      MINIO_BUCKET: submissions
+      JWT_SECRET: ${JWT_SECRET:-plagiarism-checker-secret-key-change-in-production-min-256-bits}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    restart: on-failure
+
+  web:
+    build:
+      context: ./pc-web
+      dockerfile: Dockerfile
+    container_name: pc-web
+    ports:
+      - '3000:80'
+    depends_on:
+      - api
+    restart: on-failure
+
+volumes:
+  pg_data:
+  minio_data:

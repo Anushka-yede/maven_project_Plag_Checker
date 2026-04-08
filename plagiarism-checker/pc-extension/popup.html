@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plagiarism Checker Pro</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { width: 340px; font-family: 'Inter', system-ui, sans-serif;
+           background: #0f1117; color: #e2e8f0; }
+    .header { background: linear-gradient(135deg, #4f46e5, #7c3aed);
+              padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+    .header .logo { font-size: 24px; }
+    .header h1 { font-size: 14px; font-weight: 700; color: white; }
+    .header p  { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+    .body { padding: 16px; }
+    textarea { width: 100%; height: 120px; background: #1e293b; border: 1px solid #334155;
+               border-radius: 10px; color: #e2e8f0; padding: 10px 12px; font-size: 12px;
+               resize: none; outline: none; font-family: inherit; }
+    textarea:focus { border-color: #6366f1; }
+    button { width: 100%; margin-top: 10px; padding: 10px; border-radius: 10px; border: none;
+             background: linear-gradient(135deg, #4f46e5, #6366f1); color: white;
+             font-size: 13px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+    button:hover { opacity: 0.9; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .result { margin-top: 12px; border-radius: 10px; padding: 12px; font-size: 12px;
+              border: 1px solid; }
+    .result.low    { background: #052e16; border-color: #166534; color: #86efac; }
+    .result.medium { background: #451a03; border-color: #92400e; color: #fcd34d; }
+    .result.high   { background: #450a0a; border-color: #991b1b; color: #fca5a5; }
+    .result .risk  { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .result .msg   { font-size: 11px; opacity: 0.8; }
+    .tip { margin-top: 8px; font-size: 11px; color: #64748b; text-align: center; }
+    .spinner { animation: spin 1s linear infinite; display: inline-block; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo">🛡</span>
+    <div>
+      <h1>Plagiarism Checker Pro</h1>
+      <p>Pre-submission AI / plagiarism check</p>
+    </div>
+  </div>
+  <div class="body">
+    <textarea id="textInput" placeholder="Paste text here or use the selection button to grab selected text from the page…"></textarea>
+    <button id="grabBtn" style="background:#1e293b; border:1px solid #334155; margin-top:8px; color:#94a3b8;">
+      📋 Use Selected Text from Page
+    </button>
+    <button id="checkBtn">🔍 Check Now</button>
+    <div id="result" style="display:none" class="result"></div>
+    <p class="tip">Connected to localhost:8080</p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

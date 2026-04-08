@@ -1,0 +1,270 @@
+﻿[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Plagiarism Checker Pro                                             [pom]
+[INFO] PC Core ù Shared Domain Models and Utilities                       [jar]
+[INFO] PC Parser ù Document Parsing (PDF, DOCX, TXT)                      [jar]
+[INFO] PC Engine ù NLP and Similarity Core                                [jar]
+[INFO] PC AI ù Claude API Integrations                                    [jar]
+[INFO] PC Batch ù Spring Batch Processing Pipelines                       [jar]
+[INFO] PC API ù Spring Boot REST Application                              [jar]
+[INFO] 
+[INFO] -----------------< com.plagiarism:plagiarism-checker >------------------
+[INFO] Building Plagiarism Checker Pro 1.0.0-SNAPSHOT                     [1/7]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ plagiarism-checker ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ plagiarism-checker ---
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pom.xml to C:\Users\vaish\.m2\repository\com\plagiarism\plagiarism-checker\1.0.0-SNAPSHOT\plagiarism-checker-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< com.plagiarism:pc-core >-----------------------
+[INFO] Building PC Core ù Shared Domain Models and Utilities 1.0.0-SNAPSHOT [2/7]
+[INFO]   from pc-core\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ pc-core ---
+[INFO] Deleting E:\anushka maven project\plagiarism-checker\pc-core\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pc-core ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-core\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pc-core ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 5 source files with javac [debug release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pc-core ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-core\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ pc-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ pc-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ pc-core ---
+[INFO] Building jar: E:\anushka maven project\plagiarism-checker\pc-core\target\pc-core-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ pc-core ---
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-core\pom.xml to C:\Users\vaish\.m2\repository\com\plagiarism\pc-core\1.0.0-SNAPSHOT\pc-core-1.0.0-SNAPSHOT.pom
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-core\target\pc-core-1.0.0-SNAPSHOT.jar to C:\Users\vaish\.m2\repository\com\plagiarism\pc-core\1.0.0-SNAPSHOT\pc-core-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------------------< com.plagiarism:pc-parser >----------------------
+[INFO] Building PC Parser ù Document Parsing (PDF, DOCX, TXT) 1.0.0-SNAPSHOT [3/7]
+[INFO]   from pc-parser\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ pc-parser ---
+[INFO] Deleting E:\anushka maven project\plagiarism-checker\pc-parser\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pc-parser ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-parser\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pc-parser ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pc-parser ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-parser\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ pc-parser ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ pc-parser ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ pc-parser ---
+[INFO] Building jar: E:\anushka maven project\plagiarism-checker\pc-parser\target\pc-parser-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ pc-parser ---
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-parser\pom.xml to C:\Users\vaish\.m2\repository\com\plagiarism\pc-parser\1.0.0-SNAPSHOT\pc-parser-1.0.0-SNAPSHOT.pom
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-parser\target\pc-parser-1.0.0-SNAPSHOT.jar to C:\Users\vaish\.m2\repository\com\plagiarism\pc-parser\1.0.0-SNAPSHOT\pc-parser-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------------------< com.plagiarism:pc-engine >----------------------
+[INFO] Building PC Engine ù NLP and Similarity Core 1.0.0-SNAPSHOT        [4/7]
+[INFO]   from pc-engine\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ pc-engine ---
+[INFO] Deleting E:\anushka maven project\plagiarism-checker\pc-engine\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pc-engine ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-engine\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pc-engine ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug release 17] to target\classes
+[INFO] /E:/anushka maven project/plagiarism-checker/pc-engine/src/main/java/com/pc/engine/indexer/LuceneIndexSearcher.java: E:\anushka maven project\plagiarism-checker\pc-engine\src\main\java\com\pc\engine\indexer\LuceneIndexSearcher.java uses or overrides a deprecated API.
+[INFO] /E:/anushka maven project/plagiarism-checker/pc-engine/src/main/java/com/pc/engine/indexer/LuceneIndexSearcher.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pc-engine ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-engine\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ pc-engine ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ pc-engine ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ pc-engine ---
+[INFO] Building jar: E:\anushka maven project\plagiarism-checker\pc-engine\target\pc-engine-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ pc-engine ---
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-engine\pom.xml to C:\Users\vaish\.m2\repository\com\plagiarism\pc-engine\1.0.0-SNAPSHOT\pc-engine-1.0.0-SNAPSHOT.pom
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-engine\target\pc-engine-1.0.0-SNAPSHOT.jar to C:\Users\vaish\.m2\repository\com\plagiarism\pc-engine\1.0.0-SNAPSHOT\pc-engine-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] ------------------------< com.plagiarism:pc-ai >------------------------
+[INFO] Building PC AI ù Claude API Integrations 1.0.0-SNAPSHOT            [5/7]
+[INFO]   from pc-ai\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ pc-ai ---
+[INFO] Deleting E:\anushka maven project\plagiarism-checker\pc-ai\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pc-ai ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-ai\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pc-ai ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 17] to target\classes
+[INFO] /E:/anushka maven project/plagiarism-checker/pc-ai/src/main/java/com/pc/ai/AiDetectorService.java: Some input files use or override a deprecated API.
+[INFO] /E:/anushka maven project/plagiarism-checker/pc-ai/src/main/java/com/pc/ai/AiDetectorService.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pc-ai ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-ai\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ pc-ai ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ pc-ai ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ pc-ai ---
+[INFO] Building jar: E:\anushka maven project\plagiarism-checker\pc-ai\target\pc-ai-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ pc-ai ---
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-ai\pom.xml to C:\Users\vaish\.m2\repository\com\plagiarism\pc-ai\1.0.0-SNAPSHOT\pc-ai-1.0.0-SNAPSHOT.pom
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-ai\target\pc-ai-1.0.0-SNAPSHOT.jar to C:\Users\vaish\.m2\repository\com\plagiarism\pc-ai\1.0.0-SNAPSHOT\pc-ai-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------------------< com.plagiarism:pc-batch >-----------------------
+[INFO] Building PC Batch ù Spring Batch Processing Pipelines 1.0.0-SNAPSHOT [6/7]
+[INFO]   from pc-batch\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ pc-batch ---
+[INFO] Deleting E:\anushka maven project\plagiarism-checker\pc-batch\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pc-batch ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-batch\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pc-batch ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 8 source files with javac [debug release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pc-batch ---
+[INFO] skip non existing resourceDirectory E:\anushka maven project\plagiarism-checker\pc-batch\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ pc-batch ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ pc-batch ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ pc-batch ---
+[INFO] Building jar: E:\anushka maven project\plagiarism-checker\pc-batch\target\pc-batch-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ pc-batch ---
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-batch\pom.xml to C:\Users\vaish\.m2\repository\com\plagiarism\pc-batch\1.0.0-SNAPSHOT\pc-batch-1.0.0-SNAPSHOT.pom
+[INFO] Installing E:\anushka maven project\plagiarism-checker\pc-batch\target\pc-batch-1.0.0-SNAPSHOT.jar to C:\Users\vaish\.m2\repository\com\plagiarism\pc-batch\1.0.0-SNAPSHOT\pc-batch-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] -----------------------< com.plagiarism:pc-api >------------------------
+[INFO] Building PC API ù Spring Boot REST Application 1.0.0-SNAPSHOT      [7/7]
+[INFO]   from pc-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ pc-api ---
+[INFO] Deleting E:\anushka maven project\plagiarism-checker\pc-api\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pc-api ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pc-api ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 26 source files with javac [debug release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[161,13] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[162,13] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[163,13] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[62,12] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[42,9] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[45,9] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[49,9] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[63,9] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[64,9] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[65,9] reference to List is ambiguous
+  both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[INFO] 10 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Plagiarism Checker Pro 1.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Plagiarism Checker Pro ............................. SUCCESS [  1.206 s]
+[INFO] PC Core ù Shared Domain Models and Utilities ....... SUCCESS [  7.678 s]
+[INFO] PC Parser ù Document Parsing (PDF, DOCX, TXT) ...... SUCCESS [  1.379 s]
+[INFO] PC Engine ù NLP and Similarity Core ................ SUCCESS [  1.612 s]
+[INFO] PC AI ù Claude API Integrations .................... SUCCESS [  1.869 s]
+[INFO] PC Batch ù Spring Batch Processing Pipelines ....... SUCCESS [  2.199 s]
+[INFO] PC API ù Spring Boot REST Application .............. FAILURE [  3.361 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.805 s
+[INFO] Finished at: 2026-03-30T21:28:28+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project pc-api: Compilation failure: Compilation failure: 
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[161,13] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[162,13] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[163,13] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[62,12] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[42,9] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[45,9] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[49,9] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[63,9] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[64,9] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] /E:/anushka maven project/plagiarism-checker/pc-api/src/main/java/com/pc/api/service/ReportService.java:[65,9] reference to List is ambiguous
+[ERROR]   both interface java.util.List in java.util and class com.itextpdf.layout.element.List in com.itextpdf.layout.element match
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :pc-api
