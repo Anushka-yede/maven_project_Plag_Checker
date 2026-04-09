@@ -4,7 +4,7 @@ import { ShieldAlert, Bot, PenTool, CheckCircle, ArrowRight } from 'lucide-react
 
 export default function Home() {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0},
     visible: { 
       opacity: 1,
       transition: { staggerChildren: 0.2 }
